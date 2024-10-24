@@ -1,0 +1,41 @@
+API DE CLIMA
+import requests
+ciudad = "Toluca"
+api key = "85116d433ed54c2cc4d59f7865d741f8"
+url="https://pro.openweathermap.org/data/2.5/forecast/hourly?lat="
+respuesa = requests.get(url)
+-data = respuesta.json()
+-data
+///////////////////////////////////////////////////////////////////////////////////////////////
+API DE LA NASA
+import requests
+import pandas as pd
+from IPython.display import Image, display
+
+url = "https://api.nasa.gov/planetary/apod"
+api_key = "ZrjN5qf1qQQo5J6zN16RHLq0aqdEpUTxcSudXfAb"
+
+
+params = {
+    "api_key" : api_key,
+    "date" : "2024-10-15"
+}
+
+respuesta = requests.get(url, params=params)
+data = respuesta.json()
+data
+
+url = "https://api.nasa.gov/DONKI/IPS?"
+
+def obtener_donki(fecha_inicio, fecha_fin):
+    params = {
+        "api_key": api_key,
+        "startDate": fecha_inicio,
+        "endDate": fecha_fin
+    }
+    respuesta = requests.get(url, params=params)
+    data = respuesta.json()
+    return pd.DataFrame(data)
+
+df = obtener_donki("2023-12-01", "2023-12-31")
+df
